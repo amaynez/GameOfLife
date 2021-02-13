@@ -3,6 +3,10 @@ import math
 import random as rnd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+size_x = 120
+size_y = 120
+density = 0.1
+board_setup = {(39, 40), (39, 41), (40, 39), (40, 40), (41, 40)}
 
 class GameOfLife:
     def __init__(self, board_size_x, board_size_y, initial_grid):
@@ -46,28 +50,30 @@ class GameOfLife:
                 self.state.add(cell)
 
 
-size_x = 100
-size_y = 80
-board_setup = {(39, 40), (39, 41), (40, 39), (40, 40), (41, 40)}
-
 game = GameOfLife(size_x, size_y, board_setup)
 
 fig = plt.figure()
 fig.canvas.set_window_title('Conway\'s Game of Life')
-fig.set_size_inches(11, 6)
+fig.set_size_inches(9, 6)
 axs = fig.add_subplot(1, 1, 1)
-game.randomize(.8)
+game.randomize(density)
 
 
 def animate(t):
     alive_cells = np.array(list(game.state))
-
     fig.suptitle('Iteration: ' + str(t), size=12)
     axs.clear()
     axs.set_xlim(0, size_x)
     axs.set_ylim(0, size_y)
     axs.axis("off")
-    axs.scatter(alive_cells[:, :1], alive_cells[:, 1:], c='0.2', marker='o', s=40)
+    if alive_cells.ndim > 1:
+        axs.scatter(
+            alive_cells[:, :1],
+            alive_cells[:, 1:],
+            c='0.2',
+            marker='o',
+            s=(100**2/(size_x*size_y))*30
+        )
 
     game.next_state()
 
