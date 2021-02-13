@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 size_x = 100
 size_y = 100
-density = 0.1
+density = 0.8
 """
 the board state is a set of tuples that will contain only
 the coordinates of the cells which are alive
@@ -39,17 +39,9 @@ class GameOfLife:
         """
 
         neighbors = []
-        """
-        loop x from -1 to +1
-        """
+
         for x in range(-1, 2, 1):
-            """
-            loop y from -1 to +1
-            """
             for y in range(-1, 2, 1):
-                """
-                avoid the cell in question
-                """
                 if not (x == 0 and y == 0):
                     """
                     only add the neighbor coordinates if those coordinates are
@@ -63,8 +55,8 @@ class GameOfLife:
         """calculate the next state of the board"""
 
         """
-        initialize a dictionary that will contain all the cells which have alive neighbors and
-        how many each of them have
+        initialize a dictionary that will contain all the cells which
+        have alive neighbors and how many each of them have
         """
         alive_neighbors = {}
 
@@ -73,8 +65,8 @@ class GameOfLife:
         """
         for cell in self.alive_cells:
             """
-            if the cell is not already in alive_neighbors then add it
-            since this is a cell that is alive in the previous state but we don't know yet
+            if the cell is not already in alive_neighbors then add it;
+            since this is a cell that was alive in the previous state but we don't know yet
             how many neighbors it has, we will set the number of neighbors to 0
             """
             if cell not in alive_neighbors:
@@ -88,9 +80,9 @@ class GameOfLife:
             """
             for neighbor in neighbors:
                 """
-                if the neighbor is not already in alive_neighbors then add it;
+                if the neighbor cell is not already in alive_neighbors then add it;
                 since we know that this cell is at least a neighbor to the current cell (alive)
-                then start with its number of alive neighbors at 1
+                thus start with its number of alive neighbors at 1
                 """
                 if neighbor not in alive_neighbors:
                     alive_neighbors[neighbor] = 1
@@ -103,7 +95,7 @@ class GameOfLife:
                     alive_neighbors[neighbor] += 1
 
         """
-        loop through all the cells recorded in the previous loop within alive_neighbors
+        loop through all the cells recorded in alive_neighbors;
         alive_neighbors should now contain all the cells in the current state which have
         at least one neighbor plus the cells that were previously alive but have no neighbors
         """
@@ -116,21 +108,18 @@ class GameOfLife:
             if alive_neighbors[cell] < 2 or alive_neighbors[cell] > 3:
                 self.alive_cells.discard(cell)
                 """
-                else if the number of neighbors is exactly 3, then add the cell to the alive set
+                else if the number of neighbors is exactly 3, then add the cell to the alive set;
                 if the cell was already there (it was alive in the previous state) it will do
                 nothing
                 """
             elif alive_neighbors[cell] == 3:
                 self.alive_cells.add(cell)
                 """
-                from the previous logic, if a cell was alive and has between 2 and 3 neighbors it will continue
-                to be alive, since we did not discard it
+                from the previous logic, if a cell was alive and has between 2 and 3 neighbors it
+                will continue to be alive, since we did not discard it
                 """
 
 
-"""
-create the game
-"""
 game = GameOfLife(size_x, size_y, board_setup)
 
 """
@@ -168,9 +157,9 @@ def animate(t):
     axs.axis("off")
 
     """
-    if there are still cells within the alive set then plot a scatter graph with all the alive
-    cells, use numpy index slicing to select the X and Y coordinates for the alive cells
-    select the size of the markers based on the number of cells set (size_x and size_y)
+    if there are still cells within the alive set then plot a scatter graph with all
+    of them, use numpy index slicing to select the X and Y coordinates for them
+    and calculate the size of the markers based on the number of cells set (size_x and size_y)
     """
     if alive_cells.ndim > 1:
         axs.scatter(
