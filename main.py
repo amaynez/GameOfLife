@@ -6,8 +6,10 @@ from matplotlib.animation import FuncAnimation
 size_x = 100
 size_y = 100
 density = 0.1
-"""the board state is a set of tuples that will contain only
-the coordinates of the cells which are alive"""
+"""
+the board state is a set of tuples that will contain only
+the coordinates of the cells which are alive
+"""
 board_setup = {(39, 40), (39, 41), (40, 39), (40, 40), (41, 40)}
 
 
@@ -20,7 +22,6 @@ class GameOfLife:
     def clear_board(self):
         self.alive_cells.clear()
 
-
     def randomize(self, density_):
         """
         create a random state considering the density parameter,
@@ -31,7 +32,6 @@ class GameOfLife:
         for cell in range(num_cells):
             self.alive_cells.add((rnd.randint(0, self.size_x), rnd.randint(0, self.size_y)))
 
-
     def get_neighbors(self, cell):
         """
         obtain the coordinates for all the neighbors of a given cell
@@ -39,11 +39,17 @@ class GameOfLife:
         """
 
         neighbors = []
-        """loop x from -1 to +1"""
+        """
+        loop x from -1 to +1
+        """
         for x in range(-1, 2, 1):
-            """loop y from -1 to +1"""
+            """
+            loop y from -1 to +1
+            """
             for y in range(-1, 2, 1):
-                """avoid the cell in question"""
+                """
+                avoid the cell in question
+                """
                 if not (x == 0 and y == 0):
                     """
                     only add the neighbor coordinates if those coordinates are
@@ -52,7 +58,6 @@ class GameOfLife:
                     if (0 <= (cell[0] + x) <= self.size_x) and (0 <= (cell[1] + y) <= self.size_y):
                         neighbors.append((cell[0]+x, cell[1]+y))
         return neighbors
-
 
     def next_state(self):
         """calculate the next state of the board"""
@@ -63,17 +68,24 @@ class GameOfLife:
         """
         alive_neighbors = {}
 
-        """loop through all of the cells which are alive"""
+        """
+        loop through all of the cells which are alive
+        """
         for cell in self.alive_cells:
             """
             if the cell is not already in alive_neighbors then add it
             since this is a cell that is alive in the previous state but we don't know yet
-            how many neighbors it has, we will set the number of neighbors to 0"""
+            how many neighbors it has, we will set the number of neighbors to 0
+            """
             if cell not in alive_neighbors:
                 alive_neighbors[cell] = 0
-            """get the neighbors of the current cell"""
+            """
+            get the neighbors of the current cell
+            """
             neighbors = self.get_neighbors(cell)
-            """loop through all the neighbors returned"""
+            """
+            loop through all the neighbors returned
+            """
             for neighbor in neighbors:
                 """
                 if the neighbor is not already in alive_neighbors then add it;
@@ -116,14 +128,20 @@ class GameOfLife:
                 """
 
 
-"""create the game"""
+"""
+create the game
+"""
 game = GameOfLife(size_x, size_y, board_setup)
 
-"""randomize the game, if a particular state is wanted, just comment this line"""
+"""
+randomize the game, if a particular state is wanted, just comment this line
+"""
 game.randomize(density)
 
 
-"""create the matplotlib figure to show the game on the screen"""
+"""
+create the matplotlib figure to show the game on the screen
+"""
 fig = plt.figure()
 fig.canvas.set_window_title('Conway\'s Game of Life')
 fig.set_size_inches(9, 6)
@@ -140,7 +158,9 @@ def animate(t):
     """
     alive_cells = np.array(list(game.alive_cells))
 
-    """prepare the plot area for the graph"""
+    """
+    prepare the plot area for the graph
+    """
     fig.suptitle('Iteration: ' + str(t), size=12)
     axs.clear()
     axs.set_xlim(0, size_x)
@@ -160,10 +180,14 @@ def animate(t):
             marker='o',
             s=(100**2/(size_x*size_y))*30
         )
-    """once the alive cells are displayed on the screen, generate the next state"""
+    """
+    once the alive cells are displayed on the screen, generate the next state
+    """
     game.next_state()
 
 
-"""start the loop for the animation"""
+"""
+start the loop for the animation
+"""
 ani = FuncAnimation(fig, animate, interval=1)
 plt.show()
