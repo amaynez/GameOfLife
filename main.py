@@ -65,8 +65,8 @@ class GameOfLife:
                 if neighbor not in alive_neighbors:
                     alive_neighbors[neighbor] = 1
                 # else if the neighbor was already in alive_neighbors it means that it was either
-                # one of the alive cells or one neighbor to another cell, thus increase its alive
-                # counter by 1
+                # one of the alive cells or one neighbor to another cell, since we know this is a
+                # neighbor to another cell then increase its alive counter by 1
                 else:
                     alive_neighbors[neighbor] += 1
         # loop through all the cells recorded in the previous loop within alive_neighbors
