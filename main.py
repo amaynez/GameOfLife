@@ -55,7 +55,7 @@ class GameOfLife:
             # how many neighbors it has, we will set the number of neighbors to 0
             if cell not in alive_neighbors:
                 alive_neighbors[cell] = 0
-            # get the neighbors from the
+            # get the neighbors of the current cell
             neighbors = self.get_neighbors(cell)
             # loop through all the neighbors returned
             for neighbor in neighbors:
