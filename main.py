@@ -60,12 +60,15 @@ game.randomize(.8)
 
 
 def animate(t):
+    alive_cells = np.array(list(game.state))
+
+    fig.suptitle('Iteration: ' + str(t), size=12)
     axs.clear()
     axs.set_xlim(0, size_x)
     axs.set_ylim(0, size_y)
     axs.axis("off")
-    coords = np.array(list(game.state))
-    axs.scatter(coords[:, :1], coords[:, 1:], c='0.2', marker='o', s=40)
+    axs.scatter(alive_cells[:, :1], alive_cells[:, 1:], c='0.2', marker='o', s=40)
+
     game.next_state()
 
 
