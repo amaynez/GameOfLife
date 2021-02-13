@@ -65,7 +65,7 @@ class GameOfLife:
                 if neighbor not in alive_neighbors:
                     alive_neighbors[neighbor] = 1
                 # else if the neighbor was already in alive_neighbors it means that it was either
-                # one of the alive cells or a neighbor to another cell, since we know this is also a
+                # one of the alive cells or a neighbor to another cell, since we know it is also a
                 # neighbor to the current cell then increase its alive neighbors counter by 1
                 else:
                     alive_neighbors[neighbor] += 1
@@ -75,7 +75,7 @@ class GameOfLife:
         for cell in alive_neighbors:
             # if the number of neighbors of this particular cell is less than two or more than 3
             # then discard it from the set of alive cells, if it was not part of the set,
-            #  nothing happens; but if it was already alive it will delete it (the cell will die)
+            # nothing happens; but if it was already alive it will delete it (the cell will die)
             if alive_neighbors[cell] < 2 or alive_neighbors[cell] > 3:
                 self.alive_cells.discard(cell)
             # else if the number of neighbors is exactly 3, then add the cell to the alive set
