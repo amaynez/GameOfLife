@@ -3,15 +3,24 @@ import math
 import random as rnd
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-size_x = 100
-size_y = 100
+size_x = 200
+size_y = 200
 density = 0.8
 """
 the board state is a set of tuples that will contain only
 the coordinates of the cells which are alive
 """
-board_setup = {(39, 40), (39, 41), (40, 39), (40, 40), (41, 40)}
+# board_setup = {(39, 40), (39, 41), (40, 39), (40, 40), (41, 40)}
 
+# glider gun:
+board_setup = {(50, 180), (51, 180), (50, 181), (51, 181), (60, 180),
+               (60, 179), (60, 181), (61, 178), (62, 177), (63, 177),
+               (61, 182), (62, 183), (63, 183), (65, 182), (66, 181),
+               (66, 180), (66, 179), (65, 178), (64, 180), (67, 180),
+               (70, 181), (70, 182), (70, 183), (71, 181), (71, 182),
+               (71, 183), (72, 180), (72, 184), (74, 180), (74, 179),
+               (74, 184), (74, 185), (84, 182), (84, 183), (85, 182),
+               (85, 183)}
 
 class GameOfLife:
     def __init__(self, board_size_x, board_size_y, initial_grid):
@@ -48,7 +57,7 @@ class GameOfLife:
                     not outside of the canvas size
                     """
                     if (0 <= (cell[0] + x) <= self.size_x) and (0 <= (cell[1] + y) <= self.size_y):
-                        neighbors.append((cell[0]+x, cell[1]+y))
+                        neighbors.append((cell[0] + x, cell[1] + y))
         return neighbors
 
     def next_state(self):
@@ -119,13 +128,12 @@ class GameOfLife:
                 will continue to be alive, since we did not discard it
                 """
 
-
 game = GameOfLife(size_x, size_y, board_setup)
 
 """
 randomize the game, if a particular state is wanted, just comment this line
 """
-game.randomize(density)
+# game.randomize(density)
 
 
 """
@@ -135,7 +143,6 @@ fig = plt.figure()
 fig.canvas.set_window_title('Conway\'s Game of Life')
 fig.set_size_inches(9, 6)
 axs = fig.add_subplot(1, 1, 1)
-
 
 def animate(t):
     """the animate function is what the matplotlib animation library loops
@@ -167,13 +174,12 @@ def animate(t):
             alive_cells[:, 1:],
             c='0.2',
             marker='o',
-            s=(100**2/(size_x*size_y))*30
+            s=(100 ** 2 / (size_x * size_y)) * 30
         )
     """
     once the alive cells are displayed on the screen, generate the next state
     """
     game.next_state()
-
 
 """
 start the loop for the animation
