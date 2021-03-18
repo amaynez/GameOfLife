@@ -1,6 +1,8 @@
 # Conway's Game Of Life
 [![Language](https://img.shields.io/badge/language-python-blue.svg?style=flat
 )](https://www.python.org)
+[![Module](https://img.shields.io/badge/module-numpy-brightgreen.svg?style=flat
+)](https://numpy.org/)
 [![Module](https://img.shields.io/badge/module-matplotlib-brightgreen.svg?style=flat
 )](https://matplotlib.org/)
 [![Release](https://img.shields.io/badge/release-v1.0-orange.svg?style=flat
