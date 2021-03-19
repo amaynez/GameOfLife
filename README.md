@@ -12,4 +12,4 @@ Simple implementation of Conway's Game Of Life, it can take a given state to sta
 
 The program is implemented using a minimum size array, keeping only a record of the alive cells, hence saving memory and processing time each iteration. The other alternative is to keep a full array of the board and specify 0 or 1 if the cell is dead or alive.
 
-<img src='Conways_Game_of_Life.png'>
+<a href="https://amaynez.github.io/conways-game-of-life/"><img src='Conways_Game_of_Life.png'></a>
