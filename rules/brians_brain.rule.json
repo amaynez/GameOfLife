@@ -1,0 +1,9 @@
+{
+  "name": "BriansBrain",
+  "description": "Brian's Brain - 3-state rule with flying wire patterns",
+  "rule": "B2/S/N3",
+  "category": "generations",
+  "notes": "Use: gameoflife --backend generations --rule B2/S/C3",
+  "author": "Brian Silverman",
+  "discovered": "1984"
+}

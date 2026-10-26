@@ -1,0 +1,9 @@
+{
+  "name": "DayAndNight",
+  "description": "Day & Night - symmetrical rule with many interesting patterns",
+  "neighborhood": "moore",
+  "radius": 1,
+  "birth": [3, 6, 7, 8],
+  "survive": [3, 4, 6, 7, 8],
+  "states": 2
+}

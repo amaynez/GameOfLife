@@ -1,0 +1,7 @@
+{
+  "neighborhood": "moore",
+  "radius": 1,
+  "birth": [3],
+  "survive": [2, 3],
+  "states": 2
+}

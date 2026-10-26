@@ -1,0 +1,8 @@
+{
+  "name": "Serviensaver",
+  "description": "Serviensaver - common in seeds-type rules",
+  "rule": "B2/S0",
+  "category": "life-like",
+  "notes": "Use: gameoflife --backend jvn --rule B2/S0",
+  "author": "Unknown"
+}

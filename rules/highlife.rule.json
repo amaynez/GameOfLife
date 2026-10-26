@@ -1,0 +1,9 @@
+{
+  "name": "HighLife",
+  "description": "HighLife - like Life but with B36 - known for replicator patterns",
+  "neighborhood": "moore",
+  "radius": 1,
+  "birth": [3, 6],
+  "survive": [2, 3],
+  "states": 2
+}

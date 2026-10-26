@@ -1,0 +1,5 @@
+# Minimal .rule-like compatibility example
+@RULE ExampleCompat
+num_states = 2
+neighborhood = Moore
+rule = B36/S23

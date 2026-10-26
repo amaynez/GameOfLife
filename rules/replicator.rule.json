@@ -1,0 +1,8 @@
+{
+  "name": "Replicator",
+  "description": "Replicator rule - HighLife variant that replicates patterns",
+  "rule": "B36/S23",
+  "category": "life-like",
+  "notes": "Use: gameoflife --backend jvn --rule B36/S23",
+  "extra": "The replicator pattern multiplies exponentially"
+}
